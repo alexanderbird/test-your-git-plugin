@@ -1,0 +1,25 @@
+{
+  "name": "test-your-gulp-plugin",
+  "version": "1.0.0",
+  "description": "Easily test your gulp plugin by providing a set of inputs and outputs as strings.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderbird/test-your-git-plugin.git"
+  },
+  "keywords": [
+    "gulp",
+    "test-framework",
+    "plugin",
+    "development-tool"
+  ],
+  "author": "Alexander Bird",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderbird/test-your-git-plugin/issues"
+  },
+  "homepage": "https://github.com/alexanderbird/test-your-git-plugin#readme"
+}
