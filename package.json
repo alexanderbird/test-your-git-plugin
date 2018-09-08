@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/alexanderbird/test-your-git-plugin/issues"
   },
-  "homepage": "https://github.com/alexanderbird/test-your-git-plugin#readme"
+  "homepage": "https://github.com/alexanderbird/test-your-git-plugin#readme",
+  "dependencies": {
+    "gulp-util": "^3.0.8"
+  }
 }

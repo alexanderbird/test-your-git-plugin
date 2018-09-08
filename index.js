@@ -7,11 +7,11 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
       typeof isPending === 'string' ? pending(isPending) : pending();
     });
   } else {
-    it(`${testDescription} in Buffer mode`, () => {
+    it(`${testDescription} in Buffer mode`, (done) => {
       if(error) {
         testBufferModeThrowsError(plugin, input, error);
       } else {
-        testBufferOutputMatches(plugin, input, output);
+        testBufferOutputMatches(plugin, input, output, done);
       }
     });
 
