@@ -3,7 +3,7 @@ const testStreamOutputMatches = (plugin, input, output) => {
 }
 
 const testStreamModeThrowsError = (plugin, input, error) => {
-  pending('todo');
+  pending('todo -- test for ' + error);
 }
 
 module.exports = {

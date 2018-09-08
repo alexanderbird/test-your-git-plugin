@@ -9,7 +9,7 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
   } else {
     it(`${testDescription} in Buffer mode`, (done) => {
       if(error) {
-        testBufferModeThrowsError(plugin, input, error);
+        testBufferModeThrowsError(plugin, input, error, done);
       } else {
         testBufferOutputMatches(plugin, input, output, done);
       }
