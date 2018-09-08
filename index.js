@@ -1,5 +1,5 @@
-const { testBufferModeThrowsError, testBufferOutputMatches } = require('./buffer-tests');
-const { testStreamModeThrowsError, testStreamOutputMatches } = require('./stream-tests');
+const { testBufferModeThrowsError, testBufferOutputMatches, testBufferModeIgnoresNullFiles } = require('./buffer-tests');
+const { testStreamModeThrowsError, testStreamOutputMatches, testStreamModeIgnoresNullFiles } = require('./stream-tests');
 
 const _it = (testDescription, { plugin, input, output, error, pending: isPending }) => {
   if(isPending) {
@@ -15,6 +15,7 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
       }
     });
 
+    // TODO: implement Stream mode tests also
     it(`${testDescription} in Stream mode`, () => {
       if(error) {
         testStreamModeThrowsError(plugin, input, error);
@@ -25,9 +26,16 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
   }
 }
 
-  const _itIgnoresNullFiles = plugin => {
-    it('ignores null files', pending);
-  }
+// TODO: implement null file tests also
+const _itIgnoresNullFiles = plugin => {
+  it('ignores null files in Buffer mode', () => {
+    testBufferModeIgnoresNullFiles(plugin);
+  });
+
+  it('ignores null files in Stream mode', () => {
+    testStreamModeIgnoresNullFiles(plugin);
+  });
+}
 
 const testYourGulpPlugin = (name, body) => {
   describe(name, () => {

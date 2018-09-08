@@ -44,7 +44,12 @@ const testBufferModeThrowsError = (plugin, input, expectedError, done) => {
   _injectFakeBuffer(plugin, input);
 }
 
+const testBufferModeIgnoresNullFiles = plugin => {
+  pending('not yet supported in test-your-gulp-plugin');
+}
+
 module.exports = {
   testBufferModeThrowsError,
-  testBufferOutputMatches
+  testBufferOutputMatches,
+  testBufferModeIgnoresNullFiles
 }

@@ -44,6 +44,8 @@ testPlugin('gulp-swap-case', (it, itIgnoresNullFiles) => {
 });
 ```
 
+For more examples, see [gulp-json-handlebars](https://github.com/alexanderbird/gulp-json-handlebars) which uses test-your-gulp-plugin.
+
 ## Run the tests: use Jasmine
 from command line:
 ```
@@ -58,5 +60,10 @@ Yes please! I will liberally accept PRs.
 
 ## Future work
 * Add support for testing file names
+* add stream mode tests
+* add null file tests (maybe? are they needed?)
 * give examples of tests for side effects -- things other than input/output
 
+## Implementation notes
+See the [gulp docs for testing plugins](https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/testing.md) for details.
+That page links to a few plugins with "high-quality Testing" -- they're good examples to work off of
