@@ -44,7 +44,7 @@ testPlugin('gulp-swap-case', (it, itIgnoresNullFiles) => {
 });
 ```
 
-## Run tests with jasmine
+## Run the tests: use Jasmine
 from command line:
 ```
 npm install --save-dev jasmine
@@ -53,6 +53,10 @@ npx jasmine test/index.js
 
 Or, instead of using `[npx](https://www.npmjs.com/package/npx)`, add `"test": "jasmine test/index.js" to your `package.json`
 
+# Contribution
+Yes please! I will liberally accept PRs. 
+
 ## Future work
 * Add support for testing file names
 * give examples of tests for side effects -- things other than input/output
+
