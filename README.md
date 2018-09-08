@@ -23,7 +23,19 @@ testPlugin('gulp-swap-case', (it, itIgnoresNullFiles) => {
     plugin: gulpSwapCase(),
     input: 'some lower SOME UPPER',
     output: 'SOME LOWER some upper'
-  })
+  });
+
+  it('also switches case of file name', {
+    plugin: gulpSwapCase(),
+    input: {
+      contents: 'some lower SOME UPPER',
+      path: '/foo/bAr.txt'
+    },
+    output: {
+      contents: 'SOME LOWER some upper',
+      path: '/foo/BaR.txt'
+    }
+  });
 
   it('forces all to uppercase if allUpper: true is given in options', {
     plugin: gulpSwapCase({ allUpper: true }),
@@ -59,7 +71,6 @@ Or, instead of using `[npx](https://www.npmjs.com/package/npx)`, add `"test": "j
 Yes please! I will liberally accept PRs. 
 
 ## Future work
-* Add support for testing file names
 * add stream mode tests
 * add null file tests (maybe? are they needed?)
 * give examples of tests for side effects -- things other than input/output

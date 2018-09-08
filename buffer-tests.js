@@ -1,8 +1,9 @@
 const gutil = require('gulp-util');
 
 const _injectFakeBuffer = (plugin, input) => {
-  const fakeBuffer = new Buffer(input);
+  const fakeBuffer = new Buffer(input.contents);
   const fakeFile = new gutil.File({
+    path: input.path,
     contents: fakeBuffer
   });
 
@@ -12,8 +13,12 @@ const _injectFakeBuffer = (plugin, input) => {
 
 const testBufferOutputMatches = (plugin, input, output, done) => {
   plugin.on('data', function(newFile) {
-    if(typeof output === 'string') {
-      expect(newFile.contents.toString('utf-8').trim()).toEqual(output.trim());
+    if(output && typeof output.contents === 'string') {
+      expect(newFile.contents.toString('utf-8').trim()).toEqual(output.contents.trim());
+    }
+
+    if(output && typeof output.path === 'string') {
+      expect(newFile.path).toEqual(output.path);
     }
   });
 

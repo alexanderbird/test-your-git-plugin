@@ -2,6 +2,8 @@ const { testBufferModeThrowsError, testBufferOutputMatches, testBufferModeIgnore
 const { testStreamModeThrowsError, testStreamOutputMatches, testStreamModeIgnoresNullFiles } = require('./stream-tests');
 
 const _it = (testDescription, { plugin, input, output, error, pending: isPending }) => {
+  const fullInput = !input || typeof input.contents === 'string' ? input : { contents: input.toString() };
+  const fullOutput = !output || typeof output.contents === 'string' ? output : { contents: output.toString() };
   if(isPending) {
     it(testDescription, () => {
       typeof isPending === 'string' ? pending(isPending) : pending();
@@ -9,18 +11,18 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
   } else {
     it(`${testDescription} in Buffer mode`, (done) => {
       if(error) {
-        testBufferModeThrowsError(plugin, input, error, done);
+        testBufferModeThrowsError(plugin, fullInput, error, done);
       } else {
-        testBufferOutputMatches(plugin, input, output, done);
+        testBufferOutputMatches(plugin, fullInput, fullOutput, done);
       }
     });
 
     // TODO: implement Stream mode tests also
     it(`${testDescription} in Stream mode`, () => {
       if(error) {
-        testStreamModeThrowsError(plugin, input, error);
+        testStreamModeThrowsError(plugin, fullInput, error);
       } else {
-        testStreamOutputMatches(plugin, input, output);
+        testStreamOutputMatches(plugin, fullInput, fullOutput);
       }
     });
   }
