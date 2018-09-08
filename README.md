@@ -21,22 +21,25 @@ testPlugin('gulp-swap-case', (it, itIgnoresNullFiles) => {
 
   it('switches mixed case', {
     plugin: gulpSwapCase(),
-    input: `
-      some lower SOME UPPER
-    `,
-    output: `
-      SOME LOWER some upper
-    `
+    input: 'some lower SOME UPPER',
+    output: 'SOME LOWER some upper'
   })
 
   it('forces all to uppercase if allUpper: true is given in options', {
     plugin: gulpSwapCase({ allUpper: true }),
-    input: `
-      some lower SOME UPPER 
-    `,
-    output: `
-      SOME LOWER SOME UPPER
-    `
+    input: 'some lower SOME UPPER',
+    output: 'SOME LOWER SOME UPPER'
+  });
+
+  it('does something that I haven\'t written a test for yet', {
+    pending: 'waiting on X'
+    // or, `pending: true` will work too
+  });
+
+  it('errors in a given situation', {
+    plugin: gulpSwapCase(),
+    input: 'whatever',
+    error: 'Can\'t change case when text is exactly `whatever`'
   });
 });
 ```
@@ -52,3 +55,4 @@ Or, instead of using `[npx](https://www.npmjs.com/package/npx)`, add `"test": "j
 
 ## Future work
 * Add support for testing file names
+* give examples of tests for side effects -- things other than input/output
