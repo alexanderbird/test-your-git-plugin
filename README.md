@@ -12,19 +12,12 @@ involves making new Buffers, Streams, etc. -- all pretty low level tests.
 
 Example: testing imaginary gulp plugin `gulp-swap-case` which mixes up casing
 ```
-const testYourGulpPlugin = require('test-your-gulp-plugin');
+// test/index.js
+const testPlugin = require('test-your-gulp-plugin');
 const gulpSwapCase = require('..');
 
-testYourGulpPlugin('gulp-swap-case', () => {
-  it('switches lowercase to uppercase', {
-    plugin: gulpSwapCase(),
-    input: `
-      sample lowercase input
-    `,
-    output: `
-      SAMPLE LOWERCASE INPUT
-    `
-  })
+testPlugin('gulp-swap-case', (it, itIgnoresNullFiles) => {
+  itIgnoresNullFiles(gulpSwapCase());
 
   it('switches mixed case', {
     plugin: gulpSwapCase(),
@@ -48,6 +41,14 @@ testYourGulpPlugin('gulp-swap-case', () => {
 });
 ```
 
+## Run tests with jasmine
+from command line:
+```
+npm install --save-dev jasmine
+npx jasmine test/index.js
+```
+
+Or, instead of using `[npx](https://www.npmjs.com/package/npx)`, add `"test": "jasmine test/index.js" to your `package.json`
 
 ## Future work
 * Add support for testing file names
