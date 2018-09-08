@@ -2,10 +2,9 @@ const gutil = require('gulp-util');
 
 const _injectFakeBuffer = (plugin, input) => {
   const fakeBuffer = new Buffer(input.contents);
-  const fakeFile = new gutil.File({
-    path: input.path,
+  const fakeFile = new gutil.File(Object.assign({}, input, {
     contents: fakeBuffer
-  });
+  }));
 
   plugin.write(fakeFile);
   plugin.end();
