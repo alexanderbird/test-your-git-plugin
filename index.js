@@ -1,18 +1,5 @@
-const _testBufferOutputMatches = (plugin, input, output) => {
-  pending('todo');
-}
-
-const _testStreamOutputMatches = (plugin, input, output) => {
-  pending('todo');
-}
-
-const _testBufferModeThrowsError = (plugin, input, error) => {
-  pending('todo');
-}
-
-const _testStreamModeThrowsError = (plugin, input, error) => {
-  pending('todo');
-}
+const { testBufferModeThrowsError, testBufferOutputMatches } = require('./buffer-tests');
+const { testStreamModeThrowsError, testStreamOutputMatches } = require('./stream-tests');
 
 const _it = (testDescription, { plugin, input, output, error, pending: isPending }) => {
   if(isPending) {
@@ -22,17 +9,17 @@ const _it = (testDescription, { plugin, input, output, error, pending: isPending
   } else {
     it(`${testDescription} in Buffer mode`, () => {
       if(error) {
-        _testBufferModeThrowsError(plugin, input, error);
+        testBufferModeThrowsError(plugin, input, error);
       } else {
-        _testBufferOutputMatches(plugin, input, output);
+        testBufferOutputMatches(plugin, input, output);
       }
     });
 
     it(`${testDescription} in Stream mode`, () => {
       if(error) {
-        _testStreamModeThrowsError(plugin, input, error);
+        testStreamModeThrowsError(plugin, input, error);
       } else {
-        _testStreamOutputMatches(plugin, input, output);
+        testStreamOutputMatches(plugin, input, output);
       }
     });
   }
